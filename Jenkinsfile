@@ -21,10 +21,10 @@ pipeline {
             steps {
                 sh 'echo sonarqube'
                 withSonarQubeEnv(installationName: 'sonarcloud', credentialsId: 'Sonar Token') {
-                    sh '''$SCANNER_HOME/bin/soar-scanner 
+                    sh '''$SCANNER_HOME/bin/soar-scanner \
                     -Dsonar.organization=$ORGANIZATION \
                     -Dsonar.java.binaries=build/classes/java/ \
-                    -Dsonar.projectKey=$PROJECT_NAME \ 
+                    -Dsonar.projectKey=$PROJECT_NAME \
                     -Dsonar.sources=.'''
             }
         }
