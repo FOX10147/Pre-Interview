@@ -14,7 +14,7 @@ pipeline {
                 docker { image 'gradle' }
             }
             steps {
-                withSonarQubeEnv('sonar-server', envOnly: true) {
+                withSonarQubeEnv('sonar-server') {
                     sh 'echo sonarqube'
                     sh './gradlew sonarqube'
                 }
