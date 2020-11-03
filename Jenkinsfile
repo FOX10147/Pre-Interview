@@ -26,8 +26,8 @@ pipeline {
                 docker { image 'docker' }
             }
             steps {
-                sh 'echo docker build .'
-                sh "docker build -t jake/spring-boot:${env.BUILD_NUMBER}"
+                sh "echo docker build"
+                sh "docker build -t jake/spring-boot:${env.BUILD_NUMBER} ."
                 sh "docker tag jake/spring-boot:${env.BUILD_NUMBER} jake/spring-boot:latest"
             }
         }
