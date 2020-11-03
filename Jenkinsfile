@@ -11,26 +11,36 @@ pipeline {
         }
         stage('sonarqube') {
             agent {
-                docker { image 'busybox' }
+                docker { image 'gradle' }
             }
             steps {
-                sh 'echo sonarqube'
+                withSonarQubeEnv('My SonarQube Server', envOnly: true) {
+                    sh 'echo sonarqube'
+                    sh './gradlew sonarqube'
+                }
+                println ${env.SONAR_HOST_URL}
             }
         }
         stage('docker build') {
             agent {
-                docker { image 'busybox' }
+                docker { image 'docker' }
             }
             steps {
                 sh 'echo docker build'
+                sh "docker build -t jake/spring-boot:${env.BUILD_NUMBER}"
+                sh "docker tag jake/spring-boot:${env.BUILD_NUMBER} jake/spring-boot:latest"
             }
         }
         stage('docker push') {
             agent {
-                docker { image 'busybox' }
+                docker { image 'docker' }
             }
             steps {
-                sh 'echo docker push'
+                sh "echo docker push"
+                withDockerRegistry([credentialsId: "dockerlogin", url: ""]) {
+                    sh "docker push jake/spring-boot:${env.BUILD_NUMBER}"
+                    sh "docker push jake/spring-boot:latest"
+                }
             }
         }
         stage('app deploy') {
