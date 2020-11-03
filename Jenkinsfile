@@ -18,7 +18,7 @@ pipeline {
                     sh 'echo sonarqube'
                     sh './gradlew sonarqube'
                 }
-                println ${env.SONAR_HOST_URL}
+                sh "echo ${env.SONAR_HOST_URL}"
             }
         }
         stage('docker build') {
