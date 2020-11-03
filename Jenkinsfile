@@ -45,10 +45,12 @@ pipeline {
         }
         stage('app deploy') {
             agent {
-                docker { image 'busybox' }
+                docker { image 'fox10147/kubecli' }
             }
             steps {
-                sh 'echo kube deploy'
+                withKubeConfig([credentialsId: 'kube-creds', serverUrl: 'https://kubernetes.docker.internal:6443']) {
+                    sh 'kubectl apply -f kubernetes.yml'
+                }
             }
         }
     }
