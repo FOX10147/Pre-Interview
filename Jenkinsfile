@@ -27,8 +27,8 @@ pipeline {
             }
             steps {
                 sh "echo docker build"
-                sh "docker build -t jake/spring-boot:${env.BUILD_NUMBER} ."
-                sh "docker tag jake/spring-boot:${env.BUILD_NUMBER} jake/spring-boot:latest"
+                sh "docker build -t fox10147/spring-boot:${env.BUILD_NUMBER} ."
+                sh "docker tag fox10147/spring-boot:${env.BUILD_NUMBER} fox10147/spring-boot:latest"
             }
         }
         stage('docker push') {
@@ -38,8 +38,8 @@ pipeline {
             steps {
                 sh "echo docker push"
                 withDockerRegistry([credentialsId: "dockerlogin", url: ""]) {
-                    sh "docker push jake/spring-boot:${env.BUILD_NUMBER}"
-                    sh "docker push jake/spring-boot:latest"
+                    sh "docker push fox10147/spring-boot:${env.BUILD_NUMBER}"
+                    sh "docker push fox10147/spring-boot:latest"
                 }
             }
         }
