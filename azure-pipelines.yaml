@@ -9,11 +9,29 @@ trigger:
 pool:
   vmImage: 'ubuntu-latest'
 
-steps:
-- script: echo Hello, world!
-  displayName: 'Run a one-line script'
+stages:
+- stage: Hello World
+  jobs:
+  - job: echo
+    steps:
+    - script: echo Hello, world!
+      displayName: 'Run a one-line script'
 
-- script: |
-    echo Add other tasks to build, test, and deploy your project.
-    echo See https://aka.ms/yaml
-  displayName: 'Run a multi-line script'
+- stage: sonar cloud
+  jobs:
+  - job: echo
+    steps:
+    - task: SonarCloudPrepare@1
+      inputs:
+        SonarCloud: 'Project3'
+        organization: 'project3'
+        scannerMode: 'Other'
+      
+- stage: other tasks
+  jobs:
+  - job: echo
+    steps:
+    - script: |
+        echo Add other tasks to build, test, and deploy your project.
+        echo See https://aka.ms/yaml
+      displayName: 'Run a multi-line script'
