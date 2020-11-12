@@ -26,6 +26,7 @@ stages:
         SonarCloud: 'Project3'
         organization: 'project3'
         scannerMode: 'Other'
+    - task: SonarCloudAnalyze@1
       
 - stage: other_tasks
   jobs:
