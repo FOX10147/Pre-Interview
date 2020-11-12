@@ -27,6 +27,9 @@ stages:
         organization: 'project3'
         scannerMode: 'Other'
     - task: SonarCloudAnalyze@1
+    - task: SonarCloudPublish@1
+      inputs:
+        pollingTimeoutSec: '300'
       
 - stage: other_tasks
   jobs:
