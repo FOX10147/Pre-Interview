@@ -10,14 +10,14 @@ pool:
   vmImage: 'ubuntu-latest'
 
 stages:
-- stage: Hello World
+- stage: hello_world
   jobs:
   - job: echo
     steps:
     - script: echo Hello, world!
       displayName: 'Run a one-line script'
 
-- stage: sonar cloud
+- stage: sonar_cloud
   jobs:
   - job: echo
     steps:
@@ -27,7 +27,7 @@ stages:
         organization: 'project3'
         scannerMode: 'Other'
       
-- stage: other tasks
+- stage: other_tasks
   jobs:
   - job: echo
     steps:
