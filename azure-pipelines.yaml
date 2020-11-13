@@ -24,7 +24,7 @@ stages:
     - task: SonarCloudPrepare@1
       inputs:
         SonarCloud: 'project3'
-        organization: 'FOX10147'
+        organization: 'project3'
         scannerMode: 'Other'
     - task: Gradle@2
       inputs:
@@ -43,7 +43,9 @@ stages:
       inputs:
         pollingTimeoutSec: '300'
 
-  - job: echo2
+- stage: echo2
+  jobs:
+  - job: echo3
     steps:
     - script: |
         echo Add other tasks to build, test, and deploy your project.
