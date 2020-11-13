@@ -24,7 +24,7 @@ stages:
     - task: SonarCloudPrepare@1
       inputs:
         SonarCloud: 'project3'
-        organization: 'project3'
+        organization: 'fox10147'
         scannerMode: 'Other'
     - task: Gradle@2
       inputs:
