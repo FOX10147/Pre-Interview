@@ -36,7 +36,7 @@ stages:
         sonarQubeRunAnalysis: true
         sqGradlePluginVersionChoice: 'specify'
         sonarQubeGradlePluginVersion: '2.6.1'
-        checkStyleRunAnalysis: true
+        checkStyleRunAnalysis: false
         findBugsRunAnalysis: false
     - task: SonarCloudAnalyze@1
     - task: SonarCloudPublish@1
