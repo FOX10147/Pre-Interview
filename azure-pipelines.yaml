@@ -23,8 +23,8 @@ stages:
     steps:
     - task: SonarCloudPrepare@1
       inputs:
-        SonarCloud: 'Project3'
-        organization: 'FOX10147_Pre-interview'
+        SonarCloud: 'project3'
+        organization: 'FOX10147'
         scannerMode: 'Other'
     - task: Gradle@2
       inputs:
@@ -43,7 +43,6 @@ stages:
       inputs:
         pollingTimeoutSec: '300'
 
-- stage: other_tasks
   jobs:
   - job: echo
     steps:
