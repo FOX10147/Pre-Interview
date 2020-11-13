@@ -19,7 +19,7 @@ stages:
 
 - stage: sonar_cloud
   jobs:
-  - job: echo
+  - job: echo1
     steps:
     - task: SonarCloudPrepare@1
       inputs:
@@ -43,7 +43,7 @@ stages:
       inputs:
         pollingTimeoutSec: '300'
 
-  - job: echo
+  - job: echo2
     steps:
     - script: |
         echo Add other tasks to build, test, and deploy your project.
