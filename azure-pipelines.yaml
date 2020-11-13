@@ -26,6 +26,18 @@ stages:
         SonarCloud: 'Project3'
         organization: 'project3'
         scannerMode: 'Other'
+    - task: Gradle@2
+      inputs:
+        gradleWrapperFile: 'gradlew'
+        tasks: 'build'
+        publishJUnitResults: true
+        testResultsFiles: '**/TEST-*.xml'
+        javaHomeOption: 'JDKVersion'
+        sonarQubeRunAnalysis: true
+        sqGradlePluginVersionChoice: 'specify'
+        sonarQubeGradlePluginVersion: '2.6.1'
+        checkStyleRunAnalysis: true
+        findBugsRunAnalysis: true
     - task: SonarCloudAnalyze@1
     - task: SonarCloudPublish@1
       inputs:
