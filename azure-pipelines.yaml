@@ -76,7 +76,7 @@ stages:
         namespace: 'azure-kube-spring'
         command: 'apply'
         useConfigurationFile: true
-        Configuration: '**/spring-deploy-service.yml'
+        Configuration: 'spring-deploy-service.yml'
         secretType: 'dockerRegistry'
         containerRegistryType: 'Container Registry'
         dockerRegistryEndpoint: 'docker-login'
