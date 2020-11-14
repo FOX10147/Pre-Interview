@@ -17,7 +17,7 @@ stages:
     - script: echo Hello, world!
       displayName: 'Run a one-line script'
 
-- stage: 'Sonar Cloud'
+- stage: 'Sonar_Cloud'
   jobs:
   - job: 'All Sonar'
     steps:
