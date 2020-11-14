@@ -66,7 +66,9 @@ stages:
         containerRegistry: 'docker-login'
         repository: 'fox10147/azure-spring'
         command: push
-        tags: latest
+        tags: |
+          $(Build.BuildId)
+          latest
 
 - stage: echo2
   jobs:
