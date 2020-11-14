@@ -53,7 +53,7 @@ stages:
         containerRegistry: 'docker-login'
         repository: 'fox10147/azure-spring'
         command: 'build'
-        Dockerfile: '**/pipe/Dockerfile'
+        Dockerfile: '**/Dockerfile'
         tags: |
           $(Build.BuildId)
           latest
