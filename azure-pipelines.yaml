@@ -70,10 +70,11 @@ stages:
           $(Build.BuildId)
           latest
     - task: Kubernetes@1
+      displayName: kube deploy with file
       inputs:
         connectionType: 'Kubernetes Service Connection'
         kubernetesServiceEndpoint: 'azure-kube-spring'
-        namespace: 'azure-kube-spring'
+        namespace: 'spring'
         command: 'apply'
         useConfigurationFile: true
         Configuration: 'spring-deploy-service.yml'
