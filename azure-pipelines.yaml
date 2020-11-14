@@ -19,7 +19,7 @@ stages:
 
 - stage: 'Sonar_Cloud'
   jobs:
-  - job: 'All Sonar'
+  - job: 'All_Sonar'
     steps:
     - task: SonarCloudPrepare@1
       inputs:
@@ -45,7 +45,7 @@ stages:
 
 - stage: 'Docker'
   jobs:
-  - job: 'Docker Build'
+  - job: 'Docker_Build'
     steps:
     - task: Docker@2
       displayName: 'Building image...'
