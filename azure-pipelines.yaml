@@ -57,6 +57,11 @@ stages:
         tags: |
           $(Build.BuildId)
           latest
+  - job: 'Docker_Push'
+    steps:
+    - script: |
+        sh 'chmod +x gradlew' 
+        sh './gradlew build'
     - task: Docker@2
       displayName: 'pushing image to docker repository...'
       inputs:
