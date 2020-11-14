@@ -22,11 +22,13 @@ stages:
   - job: 'All_Sonar'
     steps:
     - task: SonarCloudPrepare@1
+      displayName: prepare sonar
       inputs:
         SonarCloud: 'project3'
         organization: 'fox10147'
         scannerMode: 'Other'
     - task: Gradle@2
+      displayName: create gradle wrapper
       inputs:
         gradleWrapperFile: 'gradlew'
         tasks: 'build'
@@ -39,7 +41,9 @@ stages:
         checkStyleRunAnalysis: false
         findBugsRunAnalysis: false
     - task: SonarCloudAnalyze@1
+      displayName: analyze with sonar (not required)
     - task: SonarCloudPublish@1
+      displayName: publish report to sonar.io
       inputs:
         pollingTimeoutSec: '300'
 
