@@ -17,9 +17,9 @@ stages:
     - script: echo Hello, world!
       displayName: 'Run a one-line script'
 
-- stage: sonar_cloud
+- stage: 'Sonar Cloud'
   jobs:
-  - job: echo1
+  - job: 'All Sonar'
     steps:
     - task: SonarCloudPrepare@1
       inputs:
@@ -42,6 +42,28 @@ stages:
     - task: SonarCloudPublish@1
       inputs:
         pollingTimeoutSec: '300'
+
+- stage: 'Docker'
+  jobs:
+  - job: 'Docker Build'
+    steps:
+    - task: Docker@2
+      displayName: 'Building image...'
+      inputs:
+        containerRegistry: 'docker-login'
+        repository: 'fox10147/azure-spring'
+        command: 'build'
+        Dockerfile: '**/Dockerfile'
+        tags: |
+          $(Build.BuildId)
+          latest
+    - task: Docker@2
+      displayName: 'pushing image to docker repository...'
+      inputs:
+        containerRegistry: 'docker-login'
+        repository: 'fox10147/azure-spring'
+        command: push
+        tags: latest
 
 - stage: echo2
   jobs:
