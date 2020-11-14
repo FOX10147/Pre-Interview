@@ -48,8 +48,8 @@ stages:
   - job: 'Docker_Build'
     steps:
     - script: |
-        sh 'chmod +x gradlew' 
-        sh './gradlew build'
+        chmod +x gradlew 
+        ./gradlew build
     - task: Docker@2
       displayName: 'Building image...'
       inputs:
