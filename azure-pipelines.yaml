@@ -47,6 +47,9 @@ stages:
   jobs:
   - job: 'Docker_Build'
     steps:
+    - script: |
+        sh 'chmod +x gradlew' 
+        sh './gradlew build'
     - task: Docker@2
       displayName: 'Building image...'
       inputs:
@@ -57,9 +60,6 @@ stages:
         tags: |
           $(Build.BuildId)
           latest
-    - script: |
-        sh 'chmod +x gradlew' 
-        sh './gradlew build'
     - task: Docker@2
       displayName: 'pushing image to docker repository...'
       inputs:
