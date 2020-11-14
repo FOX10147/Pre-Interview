@@ -69,6 +69,17 @@ stages:
         tags: |
           $(Build.BuildId)
           latest
+    - task: Kubernetes@1
+      inputs:
+        connectionType: 'Kubernetes Service Connection'
+        kubernetesServiceEndpoint: 'azure-kube-spring'
+        namespace: 'azure-kube-spring'
+        command: 'apply'
+        useConfigurationFile: true
+        Configuration: '**/spring-deploy-service.yml'
+        secretType: 'dockerRegistry'
+        containerRegistryType: 'Container Registry'
+        dockerRegistryEndpoint: 'docker-login'
 
 - stage: echo2
   jobs:

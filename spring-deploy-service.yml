@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: springboot-sample
-          image: fox10147/spring-boot:latest
+          image: fox10147/azure-spring:latest
           ports:
             - containerPort: 8080
 ---
