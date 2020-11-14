@@ -53,12 +53,10 @@ stages:
         containerRegistry: 'docker-login'
         repository: 'fox10147/azure-spring'
         command: 'build'
-        Dockerfile: '**/Dockerfile'
+        Dockerfile: '**/pipe/Dockerfile'
         tags: |
           $(Build.BuildId)
           latest
-  - job: 'Docker_Push'
-    steps:
     - script: |
         sh 'chmod +x gradlew' 
         sh './gradlew build'
