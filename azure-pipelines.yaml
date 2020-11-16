@@ -65,12 +65,18 @@ stages:
           $(Build.BuildId)
           latest
 
+    - script: |
+        sudo apt-get install rpm
+        wget https://github.com/aquasecurity/trivy/releases/download/0.12.0/trivy_0.12.0_Linux-64bit.deb
+        sudo dpkg -i trivy_0.12.0_Linux-64bit.deb
+      displayName: "Install rpm"
+
     - script: "sudo curl -sfL https://raw.githubusercontent.com/aquasecurity/trivy/master/contrib/install.sh | sh -s -- -b /usr/local/bin"
       displayName: "Get Trivy"
 
     - script: "trivy image fox10147/azure-spring:$(Build.BuildId)"
       displayName: "Scan with Trivy"
-      
+
     - task: Docker@2
       displayName: 'pushing image to docker repository...'
       inputs:
